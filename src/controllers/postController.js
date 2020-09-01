@@ -36,6 +36,7 @@ export default class PostController {
    * Creates a post in DB.
    */
   static create(req, res) {
+    const id = Math.floor(Math.random() * Math.floor(10000000000));
     const { title, slug, content } = req.body || {};
 
     if (!title || !content) {
@@ -44,10 +45,24 @@ export default class PostController {
     }
 
     db.query(
-      `INSERT INTO ${TABLE} (slug, title, content) VALUES ($1, $2, $3)`,
-      [slug, title, content]
+      `INSERT INTO ${TABLE} (id,slug, title, content) VALUES ($1, $2, $3, $4)`,
+      // eslint-disable-next-line comma-dangle
+      [id, slug, title, content]
     )
-      .then(() => res.status(201).send({ slug, title, content }))
+      .then(
+        () =>
+          // eslint-disable-next-line implicit-arrow-linebreak
+          db.query(
+            "INSERT INTO posts_categories (post_id,category_id) VALUES ($1, $2)",
+            [id, 1],
+          ),
+        res.status(201).send({
+          id,
+          slug,
+          title,
+          content,
+        })
+      )
       .catch(({ message }) => res.status(500).send({ message }));
   }
 

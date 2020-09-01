@@ -19,20 +19,8 @@ export default class CategorieController {
 
   static getCategories(req, res) {
     db.query(`SELECT * FROM ${TABLE}`)
+      // eslint-disable-next-line arrow-parens
       .then((result) => res.send(result.rows))
       .catch(({ message }) => res.status(500).send({ message }));
   }
 }
-
-`with post_i as (
-  insert into posts(slug,title,content) 
-  values('fai55','shaggk', 'ererer') 
-  RETURNING id
-), 
-post_cat as (
- insert into posts_categories( id ,category_id) 
- values
- ( (select id from post_i), 'seo'))
- 
- 
- `;

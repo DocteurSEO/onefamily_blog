@@ -1,6 +1,7 @@
 export default {
   CREATE_TABLE: `CREATE TABLE IF NOT EXISTS categories (
-    name VARCHAR (250) PRIMARY KEY
+    id SERIAL PRIMARY KEY,
+    name VARCHAR 
     ) 
 
 `,

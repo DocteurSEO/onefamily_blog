@@ -10,7 +10,8 @@
     "clean": "rimraf dist",
     "dev:build": "npm-run-all --parallel clean start",
     "dev": "nodemon --watch src --exec npm run dev:build",
-    "start": "npm run build && node dist/server.js"
+    "prestart": "npm run build ",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "body-parser": "1.18.3",
