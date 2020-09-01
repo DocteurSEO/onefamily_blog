@@ -36,7 +36,7 @@ export default class PostController {
    * Creates a post in DB.
    */
   static create(req, res) {
-    const id = Math.floor(Math.random() * Math.floor(100000000));
+    const id = Math.floor(Math.random() * Math.floor(1000000000));
     const { title, slug, content } = req.body || {};
 
     if (!title || !content) {

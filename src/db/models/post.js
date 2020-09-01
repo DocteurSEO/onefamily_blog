@@ -1,6 +1,6 @@
 export default {
   CREATE_TABLE: `CREATE TABLE IF NOT EXISTS posts (
-    id NUMERIC PRIMARY KEY,
+    id VARCHAR (50) PRIMARY KEY,
     author_id VARCHAR (50) REFERENCES authors(id) ON DELETE CASCADE,
     title VARCHAR (150) NOT NULL,
     slug text,
