@@ -11,9 +11,7 @@ router
   .get(CommentController.get)
   .post(CommentController.create);
 
-// router
-//   .route("/posts/:id")
-//   .get(CommentController.getPost)
+router.route("/comments/:id").get(CommentController.getComment);
 //   .put(CommentController.update)
 //   .delete(CommentController.remove);
 

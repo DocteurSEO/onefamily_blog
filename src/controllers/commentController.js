@@ -53,9 +53,9 @@ export default class CommentController {
       .catch(({ message }) => res.status(500).send({ message }));
   }
 
-  static getPost(req, res) {
-    db.query(`SELECT * FROM ${TABLE} WHERE id = $1`, [req.postId])
-      .then((result) => res.send(result.rows[0]))
+  static getComment(req, res) {
+    db.query(`SELECT * FROM ${TABLE} WHERE post_id = $1`, [req.params.id])
+      .then((result) => res.send(result.rows))
       .catch(({ message }) => res.status(500).send({ message }));
   }
 }

@@ -9,6 +9,7 @@ const router = express.Router();
 router.route("/likes").get(LikeController.get).post(LikeController.create);
 
 router.route("/likes/:id").get(LikeController.getLikes);
+
 //   .put(CommentController.update)
 //   .delete(CommentController.remove);
 
