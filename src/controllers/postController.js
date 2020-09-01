@@ -36,7 +36,7 @@ export default class PostController {
    * Creates a post in DB.
    */
   static create(req, res) {
-    const id = Math.floor(Math.random() * Math.floor(10000000000));
+    const id = Math.floor(Math.random() * Math.floor(100000000));
     const { title, slug, content } = req.body || {};
 
     if (!title || !content) {
@@ -54,7 +54,7 @@ export default class PostController {
           // eslint-disable-next-line implicit-arrow-linebreak
           db.query(
             "INSERT INTO posts_categories (post_id,category_id) VALUES ($1, $2)",
-            [id, 1],
+            [id, 1]
           ),
         res.status(201).send({
           id,
