@@ -6,13 +6,9 @@ const router = express.Router();
 // router.param('id', PostController.findById);
 
 // api/v1/posts
-router.route("/posts")
-  .get(PostController.get)
-  .post(PostController.create);
+router.route("/posts").get(PostController.get).post(PostController.create);
 
-// router
-//   .route("/posts/:id")
-//   .get(PostController.getPost)
+router.route("/posts/:id").get(PostController.getPost);
 //   .put(PostController.update)
 //   .delete(PostController.remove);
 

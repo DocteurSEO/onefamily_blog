@@ -27,7 +27,7 @@ export default class PostController {
    * Get posts from database.
    */
   static get(req, res) {
-    db.query(`SELECT * FROM ${TABLE}`)
+    db.query(`SELECT id,title FROM ${TABLE}`)
       .then((result) => res.send(result.rows))
       .catch(({ message }) => res.status(500).send({ message }));
   }
@@ -89,7 +89,7 @@ export default class PostController {
   }
 
   static getPost(req, res) {
-    db.query(`SELECT * FROM ${TABLE} WHERE id = $1`, [req.postId])
+    db.query(`SELECT * FROM ${TABLE} WHERE id = $1`, [req.params.id])
       .then((result) => res.send(result.rows[0]))
       .catch(({ message }) => res.status(500).send({ message }));
   }
