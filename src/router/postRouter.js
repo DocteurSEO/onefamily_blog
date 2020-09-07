@@ -8,8 +8,10 @@ const router = express.Router();
 // api/v1/posts
 router.route("/posts").get(PostController.get).post(PostController.create);
 
-router.route("/posts/:id").get(PostController.getPost);
+router
+  .route("/posts/:id")
+  .get(PostController.getPost)
+  .delete(PostController.remove);
 //   .put(PostController.update)
-//   .delete(PostController.remove);
 
 export default router;

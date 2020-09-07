@@ -67,7 +67,8 @@ export default class PostController {
   }
 
   static remove(req, res) {
-    db.query(`DELETE FROM ${TABLE} WHERE id = $1`, [req.postId])
+    console.log(req.params.id);
+    db.query(`DELETE FROM ${TABLE} WHERE id = $1`, [req.params.id])
       .then(() => res.status(203).send())
       .catch(({ message }) => res.status(500).send({ message }));
   }
